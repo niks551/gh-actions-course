@@ -6,6 +6,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Hello
+<<<<<<< HEAD
               run: echo "Hello, GitHub Actions!"
     echo-goodbye:
         runs-on: ubuntu-latest
@@ -16,3 +17,6 @@ jobs:
                 exit 1
             - name: Say Goodbye
               run: echo "Goodbye, GitHub Actions!"
+=======
+              run: echo "Hello, GitHub Actions!"
+>>>>>>> 619cdb10bfada8ebcf70e98d91b1ffdc2a2b52f3
