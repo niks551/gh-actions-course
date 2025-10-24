@@ -1,0 +1,27 @@
+name: Workflow Events Example
+on:
+ workflow_dispatch:
+
+jobs:
+  ubuntu-echo:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Show os
+          run: |
+           echo "This workflow was triggered by the event: ${{ github.event_name }} on ubuntu runner"
+           echo "Running on Ubuntu runner $RUNNER_OS"
+  windows-echo:
+    runs-on: wundows-latest
+    steps:
+        - name: Show os
+          shell: bash
+          run: |
+           echo "This workflow was triggered by the event: ${{ github.event_name }} on windows runner"
+           echo "Running on windows-server runner $RUNNER_OS"
+  macos-echo:
+    runs-on: macos-latest
+    steps:
+        - name: Show os
+          run: |
+           echo "This workflow was triggered by the event: ${{ github.event_name }} on macos runner"
+           echo "Running on macos runner $RUNNER_OS"
