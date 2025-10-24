@@ -1,0 +1,18 @@
+name: 01 - Building Blocks
+on: push
+
+jobs:
+    echo-hello:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Hello
+              run: echo "Hello, GitHub Actions!"
+    echo-goodbye:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Failed step
+              run: |
+                echo "This step will fail"
+                exit 1
+            - name: Say Goodbye
+              run: echo "Goodbye, GitHub Actions!"
