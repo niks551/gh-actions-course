@@ -11,7 +11,7 @@ jobs:
            echo "This workflow was triggered by the event: ${{ github.event_name }} on ubuntu runner"
            echo "Running on Ubuntu runner $RUNNER_OS"
   windows-echo:
-    runs-on: wundows-latest
+    runs-on: windows-latest
     steps:
         - name: Show os
           shell: bash
