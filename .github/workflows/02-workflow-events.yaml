@@ -1,6 +1,6 @@
 name: Workflow Events Example
 on:
- push:
+
  pull_request:
  workflow_dispatch:
 
