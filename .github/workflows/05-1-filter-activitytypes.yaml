@@ -1,0 +1,17 @@
+name: 05-1 Event Filter & Activity Types
+
+on:
+ pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Show the triggering event
+          run: |
+           echo "Running whenever a PR is opened or synchronized and base branch is main"
+           echo "This workflow was triggered by the event: ${{ github.event_name }} and ${{ github.event.action }}"
