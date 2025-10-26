@@ -1,0 +1,72 @@
+name: 06 contexts Example
+
+
+run-name: 06 contexts Example | DEBUG - ${{ inputs.debug }}
+
+on:
+ push:
+ workflow_dispatch:
+    inputs:
+      debug:
+        description: 'Enable debug mode'
+        type: boolean
+        required: false
+        default: false
+
+
+env:
+    MY_WORKFLOW_VAR: 'Job'
+    MY_OVERWRITTEN_VAR: 'Job'
+
+jobs:
+  show-contexts:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Show GitHub Context
+          run: |
+           echo "GitHub Context:"
+           echo "${{ toJson(github) }}"
+        - name: Show Runner Context
+          run: |
+           echo "Runner Context:"
+           echo "${{ toJson(runner) }}"
+        - name: Show Job Context
+          run: |
+           echo "Job Context:"
+           echo "${{ toJson(job) }}"
+        - name: Show Steps Context
+          run: |
+           echo "Steps Context:"
+           echo "${{ toJson(steps) }}"
+        - name: Show Env Context
+          run: |
+           echo "Env Context:"
+           echo "${{ toJson(env) }}"
+  display-specific-contexts:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Show Repository Info
+          run: |
+           echo "Repository: ${{ github.repository }}"
+           echo "Ref: ${{ github.ref }}"
+           echo "SHA: ${{ github.sha }}"
+           echo "Actor: ${{ github.actor }}"
+           echo "Workflow: ${{ github.workflow }}"
+           echo "Run id: ${{ github.run_id }}"
+           echo "Run number: ${{ github.run_number }}"
+
+        - name: Show Runner Info
+          run: |
+           echo "Runner Name: ${{ runner.name }}"
+           echo "Runner OS: ${{ runner.os }}"
+           echo "Runner Temp Directory: ${{ runner.temp }}"
+        - name: Retrieve vars context
+          run: |
+           echo "Variable value: ${{ vars.MY_SECRET_VAR }}"
+        - name: Print environment variables
+          env:
+            MY_OVERWRITTEN_VAR: 'Step'
+          run: |
+           echo "MY_WORKFLOW_VAR: ${{ env.MY_WORKFLOW_VAR }}"
+           echo "MY_OVERWRITTEN_VAR: ${{ env.MY_OVERWRITTEN_VAR }}"
+        
