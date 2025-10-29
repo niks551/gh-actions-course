@@ -1,0 +1,27 @@
+name: 07 Expressions Example
+
+on:
+ workflow_dispatch:
+    inputs:
+        debug:
+            description: 'Enable debug mode'
+            type: boolean
+            required: false
+            default: false
+ push:
+
+jobs:
+  expressions-example:
+    runs-on: ubuntu-latest
+    steps:
+        - name: '[debug] Print Debug Information'
+          if: ${{ inputs.debug == true }}
+          run: |
+           echo "Debug mode is enabled"
+           echo "Workflow: ${{ github.event_name }}"
+           echot "Title": ${{ github.event.head_commit.message }}
+           echo "Run ID: ${{ github.ref }}"
+           echo "Actor: ${{ github.sha }}"
+           echo "RUnner os: ${{ runner.os }}"
+
+
