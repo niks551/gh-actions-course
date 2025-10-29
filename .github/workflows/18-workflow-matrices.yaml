@@ -1,0 +1,27 @@
+name: 18-working with-matrices
+
+on:
+ workflow_dispatch:
+
+
+jobs:
+  backward-compatibility:
+    runs-on: ${{ matrix.os }}-${{ matrix.node-version }}
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Show environment
+        run: |
+          echo "Running on OS: ${{ matrix.os }}"
+          node -v
+          npm -v
