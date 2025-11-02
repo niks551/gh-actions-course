@@ -1,0 +1,9 @@
+name: Update NPM Dependencies
+description: Checks if there are updates to NPM dependencies and creates a PR if so with updated package.json and package-lock.json files.
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
+
+
+
