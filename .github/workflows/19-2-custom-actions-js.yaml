@@ -1,0 +1,13 @@
+name: 19-2-Custom Actions JS Example
+run-name: 19-2 Custom Actions JS Example
+
+on:
+ workflow_dispatch:
+
+
+jobs:
+  js-dependency-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for dependency updates
+        uses: ./.github/actions/js-dependency-update
